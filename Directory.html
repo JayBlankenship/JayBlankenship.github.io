@@ -93,7 +93,7 @@
                         if (Array.isArray(arr)) {
                             arr.forEach(repo => {
                                 // Show all repos (public or private) if they have html_url
-                                if (repo.html_url) repos.push(repo);
+                                if (repo.homepage) repos.push(repo);
                             });
                         }
                     });
@@ -103,7 +103,7 @@
                         }
                         grid.innerHTML = repos.map(repo => `
                             <div style="border:1px solid #ccc; border-radius:8px; padding:1em; background:#222; width:100%; max-width:320px; box-sizing:border-box; text-align:center;">
-                                <a href="${repo.html_url}" target="_blank" style="color:#fff; font-weight:bold; word-break:break-all;">${repo.name || repo.html_url}</a>
+                                <a href="${repo.homepage}" target="_blank" style="color:#fff; font-weight:bold; word-break:break-all;">${repo.name || repo.homepage}</a>
                             </div>
                         `).join('');
                 } catch (e) {
