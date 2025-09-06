@@ -92,7 +92,8 @@
                     Object.values(data).forEach(arr => {
                         if (Array.isArray(arr)) {
                             arr.forEach(repo => {
-                                    if (repo.html_url) repos.push(repo);
+                                // Show all repos (public or private) if they have html_url
+                                if (repo.html_url) repos.push(repo);
                             });
                         }
                     });
