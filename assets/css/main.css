@@ -1,3 +1,76 @@
+#repo-grid > div a,
+#repo-grid > div div {
+	font-size: clamp(0.85em, 2vw, 1em); /* Variable font size for better fit */
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+
+@media (max-width: 736px) {
+	#repo-grid > div a,
+	#repo-grid > div div {
+		font-size: 0.85em; /* Slightly smaller font for mobile */
+		white-space: normal;
+		overflow-wrap: break-word;
+		word-break: break-word;
+	}
+}
+/* Force repo grid text to fit within boxes and truncate overflow */
+#repo-grid > div {
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+		#repo-grid > div {
+			max-width: 160px;
+			min-height: 120px;
+			height: auto;
+			padding: 0.5em 0.25em;
+			/* Remove aspect-ratio for mobile so boxes can grow vertically */
+		}
+				#repo-grid > div a,
+				#repo-grid > div div {
+					font-size: 0.90em !important;
+				white-space: normal;
+				overflow-wrap: break-word;
+				word-break: break-word;
+				display: block;
+				height: auto;
+				padding: 0 0.25em;
+			}
+
+@media (max-width: 736px) {
+	#repo-grid > div a,
+	#repo-grid > div div {
+		-webkit-line-clamp: 2;
+		height: 3em;
+	}
+}
+/* Lock repo grid item aspect ratio and size for mobile */
+#repo-grid > div {
+	aspect-ratio: 1/1;
+	min-height: 180px;
+	max-height: 340px;
+	width: 100%;
+	max-width: 340px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+@media (max-width: 736px) {
+	#repo-grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+	#repo-grid > div {
+		max-width: 160px;
+		min-height: 160px;
+		aspect-ratio: 1/1;
+	}
+}
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900");
 
@@ -3811,7 +3884,7 @@ input, select, textarea {
 				}
 
 					#main > .post header.major > .date {
-						margin-top: -15rem;
+						margin-top: -1rem;
 						margin-bottom: 2rem;
 					}
 
