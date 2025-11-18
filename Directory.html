@@ -149,6 +149,24 @@
                         const title = repo.name || repo.homepage;
                         const desc = repo.description ? repo.description : '';
                         const src = repo.homepage;
+
+                        // Special-case: SnakeTest itch.io embed (use provided embed snippet)
+                        const lowerTitle = (title || '').toLowerCase();
+                        const isSnake = lowerTitle.includes('snaketest') || lowerTitle.includes('snakegame') || (src || '').includes('itch.io/snaketest');
+                        if (isSnake) {
+                            return `
+                                <div class="repo-card" style="width:100%; max-width:420px; box-sizing:border-box; border:1px solid #444; border-radius:12px; overflow:hidden; background:#111; padding:6px; margin:0; display:flex; flex-direction:column; justify-content:flex-start; align-items:stretch;">
+                                    <div class="iframe-wrap" style="width:100%; overflow:hidden; border-radius:10px;">
+                                        <iframe src="https://itch.io/embed/2314197" width="100%" height="320" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                    <div class="repo-info" style="background:transparent; color:#ddd; padding:0.35rem 1rem; min-height:48px; display:flex; flex-direction:column; justify-content:center; border-bottom-left-radius:12px; border-bottom-right-radius:12px;">
+                                        <a href="https://jayblankenship.itch.io/snaketest" target="_blank" style="color:#fff; font-weight:700; font-size:1.1em; margin-bottom:0.25em; text-decoration:none;">SnakeTest</a>
+                                        <div style="color:#ccc; font-size:0.95em; line-height:1.25;">${desc}</div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+
                         return `
                             <div class="repo-card" style="width:100%; max-width:420px; box-sizing:border-box; border:1px solid #444; border-radius:12px; overflow:hidden; background:#111; padding:6px; margin:0; display:flex; flex-direction:column; justify-content:flex-start; align-items:stretch;">
                                 <div class="iframe-wrap" style="width:100%; overflow:hidden; border-radius:10px;">
